@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#071115" />
+  <link rel="icon" href="data:," />
+  <title>PRIMORDIA — Become the apex</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="game" aria-label="Primordia evolution arena"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Primordia"><span class="brand-mark">✳</span><span>PRIMORDIA</span><i>PROTOCULTURE</i></a>
+      <div class="top-center"><span class="live-dot"></span> LIVE BIOSPHERE <span class="separator">/</span> <span id="biome-label">THE VERDANT</span></div>
+      <button id="sound-btn" class="icon-btn" title="Toggle sound" aria-label="Toggle sound">♫</button>
+    </header>
+    <section class="hud-left" aria-live="polite">
+      <div class="level-card"><span class="eyebrow">EVOLUTION STAGE</span><strong id="stage-name">SPORELING</strong><div class="level-row"><span id="stage-count">01</span><div class="level-track"><i id="stage-progress"></i></div><span id="next-stage">02</span></div></div>
+      <div class="mass-card"><span class="eyebrow">BIOMASS</span><div class="mass-value"><strong id="mass-value">12</strong><span>g</span></div><div class="mass-track"><i id="mass-progress"></i></div></div>
+    </section>
+    <section class="hud-right">
+      <div class="stat-box"><span class="eyebrow">PREDATORS CLAIMED</span><strong id="kills-value">00</strong></div>
+      <div class="leaderboard"><div class="leader-title"><span>◈</span> LOCAL ECOSYSTEM <b>●</b></div><ol id="leader-list"></ol></div>
+      <div class="minimap-wrap"><canvas id="minimap" width="156" height="104"></canvas><span>BIOME MAP</span></div>
+    </section>
+    <div class="objective"><span class="objective-icon">✦</span><div><b id="objective-title">THE FOOD CHAIN</b><span id="objective-copy">Consume drifting spores. Hunt anything smaller.</span></div></div>
+    <div class="bottom-hud">
+      <div class="ability"><kbd>SPACE</kbd><span class="ability-icon">➤</span><div><b>BURST</b><small id="burst-status">READY</small></div><div class="ability-meter"><i id="burst-meter"></i></div></div>
+      <div class="controls-hint"><span>MOVE</span> <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><em>or drag to steer</em></div>
+      <div class="run-stats"><span>RUN TIME</span><b id="time-value">00:00</b><span class="separator">·</span><span>BEST</span><b id="best-value">—</b></div>
+    </div>
+    <div class="mobile-controls" aria-hidden="true"><div class="stick" id="stick"><i></i></div><button id="dash-touch">➤</button></div>
+    <div id="toast" class="toast"></div>
+
+    <section id="welcome" class="overlay">
+      <div class="welcome-card">
+        <div class="welcome-kicker"><span class="live-dot"></span> EVOLUTION SIMULATION <span class="build-tag">BUILD 0.9.4</span></div>
+        <div class="hero-art"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="hero-cell"><span></span></div><div class="hero-spore s1"></div><div class="hero-spore s2"></div><div class="hero-spore s3"></div><div class="hero-caption">LIFE FINDS A WAY</div></div>
+        <h1>THE WORLD<br>IS <em>HUNGRY.</em></h1>
+        <p class="intro">Begin as a single cell. Consume. Adapt. Become the thing<br class="desktop-only"> every other lifeform learns to fear.</p>
+        <div class="start-row"><button id="start-btn" class="primary-btn">ENTER THE BIOSPHERE <span>↗</span></button><div class="start-note"><span>∞</span> ENDLESS ARENA <i>·</i> YOUR EVOLUTION</div></div>
+        <div class="howto"><div><b>01</b><span>ABSORB<br><small>drifting spores</small></span></div><div><b>02</b><span>OUTGROW<br><small>your prey</small></span></div><div><b>03</b><span>EVOLVE<br><small>your own way</small></span></div></div>
+      </div>
+      <div class="welcome-side"><span class="side-line"></span><span>ADAPT OR<br>DISAPPEAR</span><small>◉ &nbsp; ORGANISM 001</small></div>
+    </section>
+
+    <section id="mutation" class="overlay hidden">
+      <div class="mutation-panel"><div class="welcome-kicker"><span class="live-dot"></span> ADAPTATION AVAILABLE</div><h2>A NEW<br><em>INSTINCT.</em></h2><p>Your biology is ready to change. Choose a mutation.</p><div id="mutation-options" class="mutation-options"></div><div class="mutation-foot">CHOOSE ONE PATH <span>YOUR BODY REMEMBERS</span></div></div>
+    </section>
+    <section id="gameover" class="overlay hidden">
+      <div class="end-card"><div class="welcome-kicker">◌ &nbsp; ORGANISM DECEASED</div><h2>THE FOOD<br>CHAIN <em>WINS.</em></h2><p id="death-copy">Every ending feeds a beginning.</p><div class="end-stats"><div><span>BIOMASS REACHED</span><b id="end-mass">0g</b></div><div><span>EVOLUTION STAGE</span><b id="end-stage">—</b></div><div><span>CREATURES CONSUMED</span><b id="end-kills">0</b></div></div><button id="retry-btn" class="primary-btn">EVOLVE AGAIN <span>↗</span></button></div>
+    </section>
+    <div id="evolution-flash" class="evolution-flash"><span>METAMORPHOSIS</span><b id="evolution-name">APEX FORM</b></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
